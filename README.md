@@ -47,8 +47,7 @@ Seeded, version-pinned, scripted, committed. Release tag and ACS vintage frozen.
 
 ## Status
 Pre-registered (OSF, DOI 10.17605/OSF.IO/BJZR5). Analysis complete (Aims 1–3); manuscript in preparation.
-Repository: https://github.com/REPLACE_ME_USERNAME/suppression-bias
-<!-- after publishing, find-and-replace REPLACE_ME_USERNAME with your GitHub username -->
+Repository: https://github.com/kgahanduke-25/suppression-bias
 
 
 ## License

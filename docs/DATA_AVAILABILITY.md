@@ -16,12 +16,11 @@ Rural-Urban Continuum Codes 2023.
 convenience.
 
 **Code.** All analysis code is publicly available at
-**https://github.com/REPLACE_ME_USERNAME/suppression-bias** (MIT license). The executed reference
+**https://github.com/kgahanduke-25/suppression-bias** (MIT license). The executed reference
 implementation is in `python/`; a canonical R port is in `R/`. All steps are seeded and version-
 pinned (`requirements.txt`). The DuckDB working database is rebuilt from raw by the build script
 and is not committed.
 
-<!-- TODO: after publishing, find-and-replace REPLACE_ME_USERNAME with your GitHub username (here and in README.md / OSF). -->
 
 
 **Pre-registration.** OSF, DOI **10.17605/OSF.IO/BJZR5**.
