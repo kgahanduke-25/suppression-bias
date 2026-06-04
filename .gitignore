@@ -1,0 +1,19 @@
+# Raw data — redistributed via the source release, not committed (see Data Availability)
+data/raw/*.csv
+data/raw/*.csv.gz
+data/raw/*.json
+data/raw/*.jsonl
+# Working databases / large intermediates
+*.duckdb
+*.duckdb.wal
+data/processed/*.duckdb
+# R / Python cruft
+.Rhistory
+.RData
+.Rproj.user/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+# Keep: scripts (R/, python/), results/, figures/, manuscript/, docs/, and small processed CSVs
+!data/processed/*.csv
