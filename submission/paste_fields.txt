@@ -1,0 +1,15 @@
+TITLE (ASCII, paste-ready):
+Bias from small-count suppression in county-level cancer disparity estimates: a calibrated simulation study
+
+ABSTRACT (ASCII, paste-ready):
+Abstract
+
+Background. Area-level cancer disparities are routinely estimated from public county data in which rates based on small counts (fewer than 16 cases or deaths) are suppressed. Analysts typically drop suppressed counties (complete-case analysis). Because suppression depends on case counts-tied to population size and demographic composition-this missingness may be informative, but its effect on the disparity estimate has not, to our knowledge, been quantified.
+
+Methods. In a cross-sectional ecological study of 3,143 U.S. counties (analytic sample 3,018 with computable exposure) using one frozen public release of NCI State Cancer Profiles incidence and mortality data and ACS 2018-2022 5-year data, we estimated the most- versus least-deprived ICE(race+income) quintile rate ratio (RR) and rate difference for female breast, stomach, and cervix cancers under four suppression-handling methods: complete-case, available-case, bounding, and model-based small-area estimation. We characterized which counties were erased, and-following the ADEMP framework-ran a Monte Carlo simulation (1,000 replicates per cell; Monte Carlo standard error of bias ~0.0025) calibrated to the release to measure bias against a known truth. Analyses were pre-registered.
+
+Results. The suppressed fraction rose with rarity: 7.4% of counties for breast, 61.3% for stomach, and 75.7% for cervix incidence. Suppression was concentrated in the most-deprived quintile (cervix, 81.8% suppressed vs 63.8% least-deprived) and overwhelmingly removed rural rather than minority residents (cervix: 81% of the rural but 9% of the minority population erased). For breast (little suppression) the RR was 0.87 (95% CI 0.85-0.89) and identical across methods; for cervix incidence the complete-case RR (1.56) exceeded the model-based estimate (1.50), and for cervix mortality (91% suppressed) complete-case (1.86) exceeded model-based (1.56) by 16%, with an assumption-free bounding interval so wide (0.81-6.05) that the disparity was effectively unidentified. In calibrated simulation, population-weighted complete-case bias was small (<2%) at the observed deprivation-county-size correlation and grew with rarity, threshold, and unweighted aggregation; its direction was conditional, becoming positive (over-estimation) as deprived counties became smaller.
+
+Conclusions. Complete-case handling of suppressed counties over-estimates rare-cancer area disparities relative to methods that retain them, while silently erasing most of the rural and most-deprived communities the estimate is meant to represent. The effect is negligible for common cancers and grows with rarity. Public-data disparity analyses should report the suppressed fraction and use bounded or model-based estimates by default.
+
+Keywords: cancer disparities; small-count suppression; Index of Concentration at the Extremes; informative missingness; small-area estimation; rural health.

@@ -47,14 +47,24 @@ available_case <- function(df) {
 }
 
 bounding <- function(df, threshold = 16, years = 5) {
-  fill <- function(extreme) {
-    d <- df; sup <- is.na(d$rate); py <- d$pop_total * years
-    if (extreme == "low") d$rate[sup] <- 0 else d$rate[sup] <- (threshold - 1) / py[sup] * 1e5
-    disparity(d)
+  # Manski-style worst/best-case bounds. Each suppressed county's true rate lies in
+  # [0, (threshold-1)/PY]. The extremal RR/RD impute the most- (Q5) and least-deprived (Q1)
+  # quintiles at OPPOSITE extremes. Observed counties keep their rates.
+  d <- df; sup <- is.na(d$rate); maxrate <- (threshold - 1) / (d$pop_total * years) * 1e5
+  qmean <- function(frame, q) { g <- frame[frame$dep_q == q, , drop = FALSE]; wmean(g$rate, g$pop_total) }
+  scen <- function(q5_to, q1_to) {
+    f <- d; m5 <- sup & f$dep_q == MOST; m1 <- sup & f$dep_q == LEAST
+    f$rate[m5] <- if (q5_to == "max") maxrate[m5] else 0
+    f$rate[m1] <- if (q1_to == "max") maxrate[m1] else 0
+    c(q5 = qmean(f, MOST), q1 = qmean(f, LEAST))
   }
-  lo <- fill("low"); hi <- fill("high")
-  out <- list(); for (k in c("RR","RD","gradient")) out[[k]] <- sort(c(lo[[k]], hi[[k]]))
-  out$low <- lo; out$high <- hi; out
+  a <- scen("max", "low"); b <- scen("low", "max")          # a -> max RR/RD ; b -> min RR/RD
+  RR <- sort(c(b["q5"]/b["q1"], a["q5"]/a["q1"]))
+  RD <- sort(c(b["q5"]-b["q1"], a["q5"]-a["q1"]))
+  d0 <- d; d0$rate[sup] <- 0; dM <- d; dM$rate[sup] <- maxrate[sup]
+  g <- sort(c(gradient(quintile_rates(d0)), gradient(quintile_rates(dM))))
+  list(RR = unname(RR), RD = unname(RD), gradient = unname(g),
+       low = list(RR = unname(RR[1]), RD = unname(RD[1])), high = list(RR = unname(RR[2]), RD = unname(RD[2])))
 }
 
 # Empirical-Bayes state-prior shrinkage stand-in for a hierarchical Poisson small-area model.

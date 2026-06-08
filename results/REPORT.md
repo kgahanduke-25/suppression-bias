@@ -28,11 +28,11 @@ deprived (Q5/Q1 = 0.24×); deprivation–log(population) correlation = **−0.30
 | Measure | Site | % suppressed | RR complete-case (95% CI) | RR model-based | RR bounding interval | Δ model vs CC |
 |---|---|---|---|---|---|---|
 | Incidence | Breast | 7.4 | 0.87 (0.85–0.89) | 0.87 | 0.87–0.87 | 0% |
-| Incidence | Stomach | 61.3 | 1.37 (1.29–1.47) | 1.35 | 1.33–1.45 | −1.6% |
-| Incidence | Cervix | 75.7 | 1.56 (1.46–1.66) | 1.50 | 1.55–1.62 | −3.6% |
-| Mortality | Breast | 42.2 | 1.13 (1.07–1.18) | 1.13 | 1.09–1.14 | +0.1% |
-| Mortality | Stomach | 80.4 | 1.58 (1.51–1.67) | 1.51 | 1.59–1.71 | −4.6% |
-| Mortality | Cervix | 90.7 | 1.86 (1.65–2.09) | 1.56 | 1.88–2.62 | −16.0% |
+| Incidence | Stomach | 61.3 | 1.37 (1.29–1.47) | 1.35 | 1.14–1.68 | −1.6% |
+| Incidence | Cervix | 75.7 | 1.56 (1.46–1.66) | 1.50 | 1.24–2.03 | −3.6% |
+| Mortality | Breast | 42.2 | 1.13 (1.07–1.18) | 1.13 | 1.06–1.18 | +0.1% |
+| Mortality | Stomach | 80.4 | 1.58 (1.51–1.67) | 1.51 | 0.94–2.88 | −4.6% |
+| Mortality | Cervix | 90.7 | 1.86 (1.65–2.09) | 1.56 | 0.81–6.05 | −16.0% |
 
 Method sensitivity and bounding-interval width grow with suppression; at the extreme (cervix mortality,
 91% suppressed) the disparity is weakly identified. (Breast incidence RR < 1 reflects the known higher

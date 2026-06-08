@@ -51,13 +51,33 @@ def available_case(df):
     res["retention"] = pd.DataFrame(acct); return res
 
 def bounding(df, threshold=16, years=5):
-    def fill(extreme):
-        d = df.copy(); sup = d["rate"].isna(); py = d["pop_total"] * years
-        if extreme == "low": d.loc[sup, "rate"] = 0.0
-        else: d.loc[sup, "rate"] = (threshold - 1) / py[sup] * 1e5
-        return disparity(d)
-    lo, hi = fill("low"), fill("high")
-    return {k: (min(lo[k], hi[k]), max(lo[k], hi[k])) for k in ["RR","RD","gradient"]} | {"low": lo, "high": hi}
+    """Manski-style worst/best-case bounds. For a ratio/difference of the most- (Q5) vs
+    least-deprived (Q1) quintile, the extremal value pushes numerator and denominator in
+    OPPOSITE directions: each suppressed county's true rate lies in [0, (threshold-1)/PY].
+    Max RR/RD: Q5 suppressed -> max, Q1 suppressed -> 0. Min RR/RD: Q5 -> 0, Q1 -> max.
+    Observed counties keep their rates; population weighting retained."""
+    d = df.copy(); sup = d["rate"].isna()
+    maxrate = (threshold - 1) / (d["pop_total"] * years) * 1e5
+    def qmean(frame, q):
+        g = frame[frame["dep_q"] == q]
+        return _wmean(g["rate"].values, g["pop_total"].values)
+    def scenario(q5_to, q1_to):
+        f = d.copy()
+        m5 = sup & (f.dep_q == MOST); m1 = sup & (f.dep_q == LEAST)
+        f.loc[m5, "rate"] = maxrate[m5] if q5_to == "max" else 0.0
+        f.loc[m1, "rate"] = maxrate[m1] if q1_to == "max" else 0.0
+        return qmean(f, MOST), qmean(f, LEAST)
+    q5hi, q1lo = scenario("max", "low")   # -> max RR/RD
+    q5lo, q1hi = scenario("low", "max")   # -> min RR/RD
+    rr = tuple(sorted([q5lo / q1hi if q1hi else float("nan"), q5hi / q1lo if q1lo else float("nan")]))
+    rd = tuple(sorted([q5lo - q1hi, q5hi - q1lo]))
+    # gradient: coarse range under all-0 vs all-max imputation
+    d0 = d.copy(); d0.loc[sup, "rate"] = 0.0
+    dM = d.copy(); dM.loc[sup, "rate"] = maxrate[sup]
+    g = tuple(sorted([gradient(quintile_rates(d0)), gradient(quintile_rates(dM))]))
+    return {"RR": rr, "RD": rd, "gradient": g,
+            "low": {"RR": rr[0], "RD": rd[0], "gradient": g[0]},
+            "high": {"RR": rr[1], "RD": rd[1], "gradient": g[1]}}
 
 def model_based(df, years=5):
     """Empirical-Bayes state-prior shrinkage stand-in for a hierarchical Poisson small-area model.

@@ -61,6 +61,11 @@ res <- all_inc %>%
   select(fips, county_name, pop_total, hh_total, A_white_highinc, P_color_lowinc, ice_raceinc) %>%
   arrange(fips)
 
+setwd("~/Library/CloudStorage/GoogleDrive-kgahan.srf.aiims@gmail.com/My Drive/suppression-bias")
+tidycensus::census_api_key("a6c65f8a5107f9105f56ca8f674de3866d64441e", install = TRUE, overwrite = TRUE)
+readRenviron("~/.Renviron")
+source("R/pull_acs_ice.R")
+
 dir.create(dirname(out_path), showWarnings = FALSE, recursive = TRUE)
 write_csv(res, out_path)
 message("Wrote ", nrow(res), " counties -> ", normalizePath(out_path, mustWork = FALSE))

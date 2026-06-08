@@ -1,0 +1,7 @@
+Handling method,Rate ratio (95% CI),Rate difference (/100k),Counties included,% most-deprived counties retained
+Complete-case (population-weighted),0.87 (0.85–0.89),-18.4,"2,794",90
+Complete-case (unweighted county-mean),0.90 (0.88–0.92),-13.8,"2,794",90
+Available-case (= complete-case; retention shown),0.87 (0.85–0.89),-18.4,"2,794 of 3,018",90
+Bounding — impute 0,0.87,-18.8,"3,018",100
+Bounding — impute threshold,0.87,-18.4,"3,018",100
+Model-based (small-area),0.87 (0.85–0.89),-18.4,"3,018",100

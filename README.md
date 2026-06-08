@@ -1,5 +1,7 @@
-# Erased at the margins
-### How small-count suppression biases county-level cancer disparities estimates
+# Bias from small-count suppression in county-level cancer disparity estimates: a calibrated simulation study
+
+📄 **Preprint:** medRxiv, DOI [10.1101/2026.06.05.26355021](https://www.medrxiv.org/content/10.1101/2026.06.05.26355021v1)
+🔬 **Pre-registration:** OSF, DOI [10.17605/OSF.IO/BJZR5](https://doi.org/10.17605/OSF.IO/BJZR5)
 
 Reproducible code and manuscript for a methods study quantifying how the suppression of
 small-count cells (period count < 16) in NCI State Cancer Profiles distorts area-level
@@ -46,7 +48,7 @@ methods, mirroring `python/analysis_engine.py`); R driver scripts for steps 3–
 Seeded, version-pinned, scripted, committed. Release tag and ACS vintage frozen.
 
 ## Status
-Pre-registered (OSF, DOI 10.17605/OSF.IO/BJZR5). Analysis complete (Aims 1–3); manuscript in preparation.
+Posted as a preprint on medRxiv (DOI 10.1101/2026.06.05.26355021); pre-registered on OSF (DOI 10.17605/OSF.IO/BJZR5). Analysis complete (Aims 1–3).
 Repository: https://github.com/kgahanduke-25/suppression-bias
 
 
