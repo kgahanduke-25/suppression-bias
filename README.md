@@ -1,6 +1,6 @@
 # Bias from small-count suppression in county-level cancer disparity estimates: a calibrated simulation study
 
-📄 **Preprint:** medRxiv, DOI [10.1101/2026.06.05.26355021](https://www.medrxiv.org/content/10.1101/2026.06.05.26355021v1)
+📄 **Preprint:** medRxiv, DOI: https://doi.org/10.64898/2026.06.05.26355021
 🔬 **Pre-registration:** OSF, DOI [10.17605/OSF.IO/BJZR5](https://doi.org/10.17605/OSF.IO/BJZR5)
 
 Reproducible code and manuscript for a methods study quantifying how the suppression of
