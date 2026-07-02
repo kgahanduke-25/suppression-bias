@@ -15,5 +15,8 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .DS_Store
-# Keep: scripts (R/, python/), results/, figures/, manuscript/, docs/, and small processed CSVs
+# Manuscript and submission files kept private (the paper is public on medRxiv)
+manuscript/
+submission/
+# Keep: scripts (R/, python/), results/, figures/, docs/, and small processed CSVs
 !data/processed/*.csv
